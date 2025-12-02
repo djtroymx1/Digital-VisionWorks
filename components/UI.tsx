@@ -220,7 +220,6 @@ export const NoiseOverlay = () => {
 
 export const CursorFollower = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
-  const { scrollY } = useScroll();
 
   // Use springs for smooth movement
   const mouseX = useMotionValue(-100);

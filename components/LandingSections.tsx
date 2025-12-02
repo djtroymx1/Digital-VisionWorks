@@ -1,7 +1,7 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Code, Smartphone, Cloud, Bot, TrendingUp, PenTool, CheckCircle, ArrowRight } from 'lucide-react';
-import { Button, GeneratedImage, SectionTitle, TextReveal, TiltCard, ParallaxImage, FloatingElement, OptimizedImage } from './UI';
+import { Code, Smartphone, Cloud, Bot, TrendingUp, PenTool, CheckCircle } from 'lucide-react';
+import { Button, GeneratedImage, SectionTitle, TextReveal, TiltCard, ParallaxImage, FloatingElement } from './UI';
 import { ServiceItem, ProjectItem, StepItem } from '../types';
 
 // Preload critical hero image
@@ -408,7 +408,7 @@ export const Portfolio: React.FC = () => {
                 </p>
 
                 <div className="flex flex-wrap gap-3 mb-10">
-                  {project.techStack.map((tech, i) => (
+                  {project.techStack.map((tech) => (
                     <span key={tech} className="px-3 py-1 bg-[#1a1a1a] border border-white/10 text-gray-300 text-xs font-semibold rounded-sm">
                       {tech}
                     </span>
