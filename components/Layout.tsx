@@ -33,7 +33,7 @@ export const Navbar: React.FC = () => {
           aria-label="Digital VisionWorks - Home"
         >
           <img
-            src="/images/logo-horizontal-white.svg"
+            src="/images/DVW%20Transparent%20Horizontal.png"
             alt="Digital VisionWorks"
             className="h-10 md:h-12 w-auto"
           />
