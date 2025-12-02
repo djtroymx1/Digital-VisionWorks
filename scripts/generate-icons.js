@@ -12,7 +12,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
-const inputPath = join(__dirname, '../public/icons/icon.svg');
+const pwaSource = join(__dirname, '../public/icons/icon.svg');
+const faviconSource = join(__dirname, '../public/icons/favicon.svg');
 const outputDir = join(__dirname, '../public/icons');
 
 async function generateIcons() {
@@ -23,12 +24,13 @@ async function generateIcons() {
     mkdirSync(outputDir, { recursive: true });
   }
 
-  const svgBuffer = readFileSync(inputPath);
+  const pwaBuffer = readFileSync(pwaSource);
+  const faviconBuffer = readFileSync(faviconSource);
 
   for (const size of sizes) {
     const outputPath = join(outputDir, `icon-${size}x${size}.png`);
 
-    await sharp(svgBuffer)
+    await sharp(pwaBuffer)
       .resize(size, size)
       .png()
       .toFile(outputPath);
@@ -37,7 +39,7 @@ async function generateIcons() {
   }
 
   // Also create apple-touch-icon (180x180)
-  await sharp(svgBuffer)
+  await sharp(pwaBuffer)
     .resize(180, 180)
     .png()
     .toFile(join(outputDir, 'apple-touch-icon.png'));
@@ -45,11 +47,11 @@ async function generateIcons() {
 
   // Create favicon.ico (multi-size ICO format fallback as PNG)
   // Note: For true .ico format, use a dedicated tool, but modern browsers accept PNG
-  await sharp(svgBuffer)
+  await sharp(faviconBuffer)
     .resize(32, 32)
     .png()
     .toFile(join(__dirname, '../public/favicon.png'));
-  console.log('  Created: favicon.png (32x32)');
+  console.log('  Created: favicon.png (32x32 from favicon.svg)');
 
   // Generate OG image from SVG
   const ogSvgPath = join(__dirname, '../public/images/og-image.svg');

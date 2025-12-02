@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <path id="d-path" d="M90 120 L90 392 L214 392 C310 392 348 312 348 256 C348 200 310 120 214 120 Z"/>
+    <path id="w-path" d="M252 120 L300 392 L364 240 L428 392 L476 120"/>
+  </defs>
+
+  <rect width="512" height="512" rx="32" fill="#0d6fa1" stroke="#07375e" stroke-width="4"/>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <use href="#d-path" stroke="#ffffff" stroke-width="52"/>
+    <use href="#d-path" stroke="#6fd3df" stroke-width="32"/>
+    <use href="#d-path" stroke="#ffffff" stroke-width="14"/>
+
+    <use href="#w-path" stroke="#ffffff" stroke-width="52"/>
+    <use href="#w-path" stroke="#6fd3df" stroke-width="32"/>
+    <use href="#w-path" stroke="#ffffff" stroke-width="14"/>
+  </g>
+</svg>

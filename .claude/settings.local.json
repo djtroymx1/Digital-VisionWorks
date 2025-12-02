@@ -6,7 +6,19 @@
       "Bash(findstr:*)",
       "Bash(git init:*)",
       "Bash(git remote add:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git fetch:*)",
+      "Bash(git push:*)",
+      "Bash(git commit:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tailwindcss:*)",
+      "Bash(node node_modulestailwindcsslibcli.js init -p)",
+      "Bash(node \"./node_modules/tailwindcss/lib/cli.js\" init -p)",
+      "Bash(cmd /c \"dir node_modules\\tailwindcss\")",
+      "Bash(npm run build:*)",
+      "Bash(node scripts/generate-icons.js:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npx tsc:*)"
     ],
     "deny": [],
     "ask": []
