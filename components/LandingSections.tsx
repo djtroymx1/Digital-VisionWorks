@@ -536,6 +536,9 @@ interface FormErrors {
   message?: string;
 }
 
+// Formspree form ID for contact submissions
+const FORMSPREE_FORM_ID = 'mgvgyyye';
+
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -545,6 +548,7 @@ export const Contact: React.FC = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -574,17 +578,43 @@ export const Contact: React.FC = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError(null);
 
     if (validateForm()) {
       setIsSubmitting(true);
-      // Simulate form submission - actual email sending to be implemented later
-      setTimeout(() => {
+
+      try {
+        const response = await fetch(`https://formspree.io/f/${FORMSPREE_FORM_ID}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            message: formData.message
+          })
+        });
+
+        if (response.ok) {
+          setIsSubmitted(true);
+          setFormData({ name: '', email: '', message: '' });
+        } else {
+          const data = await response.json();
+          throw new Error(data.error || 'Failed to send message');
+        }
+      } catch (error) {
+        setSubmitError(
+          error instanceof Error
+            ? error.message
+            : 'Something went wrong. Please try again or email us directly.'
+        );
+      } finally {
         setIsSubmitting(false);
-        setIsSubmitted(true);
-        setFormData({ name: '', email: '', message: '' });
-      }, 1000);
+      }
     }
   };
 
@@ -721,6 +751,12 @@ export const Contact: React.FC = () => {
                   </p>
                 )}
               </div>
+
+              {submitError && (
+                <div className="p-4 bg-red-500/10 border border-red-500/50 rounded-sm" role="alert">
+                  <p className="text-red-400 text-sm">{submitError}</p>
+                </div>
+              )}
 
               <div className="pt-4 text-center md:text-left">
                 <Button
