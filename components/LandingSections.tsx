@@ -379,7 +379,7 @@ export const Portfolio: React.FC = () => {
                   transition={{ duration: 0.8 }}
                   className="relative group rounded-sm overflow-hidden border border-white/10 shadow-2xl bg-[#111]"
                 >
-                  <div className="aspect-[16/10] relative z-10">
+                  <div className="aspect-[4/3] md:aspect-[16/10] relative z-10">
                     <ParallaxImage
                       src={project.imageSrc}
                       aspectRatio="16:9" // Using standard aspect ratio but cutting via CSS for shape

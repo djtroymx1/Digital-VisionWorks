@@ -298,7 +298,7 @@ export const ParallaxImage: React.FC<{
 
   return (
     <div ref={ref} className={`relative overflow-hidden ${className}`}>
-      <motion.div style={{ y, scale }} className="w-full h-[120%] -mt-[10%] relative">
+      <motion.div style={{ y, scale }} className="w-full h-full md:h-[120%] md:-mt-[10%] relative">
         <GeneratedImage src={src} aspectRatio={aspectRatio} className="w-full h-full" overlayOpacity={overlayOpacity} alt="Parallax Visual" />
       </motion.div>
     </div>
