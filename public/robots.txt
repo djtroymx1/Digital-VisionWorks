@@ -1,0 +1,12 @@
+# Robots.txt for Digital VisionWorks
+# https://digitalvisionworks.vercel.app
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://digitalvisionworks.vercel.app/sitemap.xml
+
+# Disallow development/admin areas (if any)
+# Disallow: /admin/
+# Disallow: /api/
