@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+/* Custom Tailwind theme extensions */
+@theme {
+  --color-primary: #06b6d4;
+  --color-primary-dark: #0891b2;
+  --color-primary-light: #22d3ee;
+  --color-background: #0a0a0a;
+  --color-background-light: #1a1a1a;
+  --color-background-lighter: #252525;
+  --font-family-sans: 'Manrope', sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #06b6d4;
+}
+
+/* Image shimmer animation */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s infinite;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
