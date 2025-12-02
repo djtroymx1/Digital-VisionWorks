@@ -352,7 +352,7 @@ const projects: ProjectItem[] = [
     description: "A pet health and memory platform that helps dog owners track their pet's life—from daily moments to vet visits. AI-powered summaries make vet appointments more productive.",
     techStack: ["Next.js 15", "TypeScript", "Tailwind CSS 4", "Firebase Auth", "Firestore", "Cloud Functions", "Gemini AI", "Vercel"],
     link: "https://dogmora.com",
-    imageSrc: "/images/portfolio-dogmora.png"
+    imageSrc: "/images/portfolio2-dogmora.jpg"
   }
 ];
 
