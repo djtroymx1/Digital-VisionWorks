@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import {
   motion,
   useScroll,
@@ -55,16 +55,36 @@ export const Button: React.FC<{
 };
 
 export const GeneratedImage: React.FC<GeneratedImageProps> = ({ src, className = "", overlayOpacity = 0, alt }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
+
   return (
     <div className={`relative overflow-hidden bg-[#1a1a1a] ${className}`}>
+      {/* Skeleton loader */}
+      {!isLoaded && !hasError && (
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-[#252525] to-[#1a1a1a] animate-pulse"
+        />
+      )}
+
+      {/* Error state */}
+      {hasError && (
+        <div className="absolute inset-0 flex items-center justify-center bg-[#1a1a1a]">
+          <span className="text-gray-500 text-sm">Image unavailable</span>
+        </div>
+      )}
+
       <motion.img
         initial={{ opacity: 0, scale: 1.1 }}
-        animate={{ opacity: 1, scale: 1 }}
+        animate={{ opacity: isLoaded ? 1 : 0, scale: isLoaded ? 1 : 1.1 }}
         transition={{ duration: 0.8 }}
         src={src}
         alt={alt || ""}
         loading="lazy"
         decoding="async"
+        onLoad={() => setIsLoaded(true)}
+        onError={() => setHasError(true)}
         className="w-full h-full object-cover"
       />
 
@@ -74,6 +94,91 @@ export const GeneratedImage: React.FC<GeneratedImageProps> = ({ src, className =
         className="absolute inset-0 pointer-events-none"
         style={{ backgroundColor: `rgba(10, 10, 10, ${overlayOpacity})` }}
       />
+    </div>
+  );
+};
+
+/* ---------------- OPTIMIZED IMAGE COMPONENT ---------------- */
+
+interface OptimizedImageProps {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  className?: string;
+  priority?: boolean;
+  overlay?: boolean;
+  overlayOpacity?: number;
+}
+
+export const OptimizedImage: React.FC<OptimizedImageProps> = ({
+  src,
+  alt,
+  width,
+  height,
+  className = '',
+  priority = false,
+  overlay = false,
+  overlayOpacity = 0.5,
+}) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
+
+  // Preload priority images
+  useEffect(() => {
+    if (priority) {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => setIsLoaded(true);
+      img.onerror = () => setHasError(true);
+    }
+  }, [src, priority]);
+
+  if (hasError) {
+    return (
+      <div className={`bg-[#1a1a1a] flex items-center justify-center ${className}`}>
+        <span className="text-gray-500 text-sm">Image not available</span>
+      </div>
+    );
+  }
+
+  return (
+    <div className={`relative overflow-hidden bg-[#1a1a1a] ${className}`}>
+      {/* Skeleton loading state */}
+      {!isLoaded && (
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 animate-pulse bg-gradient-to-r from-[#1a1a1a] via-[#252525] to-[#1a1a1a] bg-[length:200%_100%] animate-[shimmer_1.5s_infinite]"
+        />
+      )}
+
+      {/* Image */}
+      <motion.img
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        loading={priority ? 'eager' : 'lazy'}
+        decoding="async"
+        onLoad={() => setIsLoaded(true)}
+        onError={() => setHasError(true)}
+        initial={{ opacity: 0, scale: 1.05 }}
+        animate={{
+          opacity: isLoaded ? 1 : 0,
+          scale: isLoaded ? 1 : 1.05,
+        }}
+        transition={{ duration: 0.6 }}
+        className="w-full h-full object-cover"
+      />
+
+      {/* Optional overlay */}
+      {overlay && (
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{ backgroundColor: `rgba(10, 10, 10, ${overlayOpacity})` }}
+        />
+      )}
     </div>
   );
 };

@@ -37,6 +37,9 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="manifest" href="/manifest.json">
 
+    <!-- Preload critical images for performance -->
+    <link rel="preload" as="image" href="/images/hero-bg.png">
+
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -90,6 +93,24 @@
       }
       ::-webkit-scrollbar-thumb:hover {
         background: #06b6d4;
+      }
+      /* Image shimmer animation */
+      @keyframes shimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+      }
+      .animate-shimmer {
+        animation: shimmer 1.5s infinite;
+      }
+      /* Reduced motion support */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
       }
     </style>
   <script type="importmap">

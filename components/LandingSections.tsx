@@ -1,8 +1,14 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Code, Smartphone, Cloud, Bot, TrendingUp, PenTool, CheckCircle, ArrowRight } from 'lucide-react';
-import { Button, GeneratedImage, SectionTitle, TextReveal, TiltCard, ParallaxImage, FloatingElement } from './UI';
+import { Button, GeneratedImage, SectionTitle, TextReveal, TiltCard, ParallaxImage, FloatingElement, OptimizedImage } from './UI';
 import { ServiceItem, ProjectItem, StepItem } from '../types';
+
+// Preload critical hero image
+if (typeof window !== 'undefined') {
+  const heroImg = new Image();
+  heroImg.src = '/images/hero-bg.png';
+}
 
 /* ---------------- HERO SECTION ---------------- */
 
