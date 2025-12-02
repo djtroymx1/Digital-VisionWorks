@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 60" fill="none">
+  <!-- DW Logo Mark - Two overlapping shapes (white version for dark backgrounds) -->
+  <g transform="translate(0, 5)">
+    <!-- Outer D shape (cyan) -->
+    <path d="M4 4 L4 46 L24 46 C38 46 46 36 46 25 C46 14 38 4 24 4 Z"
+          stroke="#22d3ee" stroke-width="5" fill="none" stroke-linejoin="round"/>
+    <!-- Inner D detail -->
+    <path d="M12 12 L12 38 L22 38 C30 38 36 32 36 25 C36 18 30 12 22 12 Z"
+          stroke="#22d3ee" stroke-width="3" fill="none" stroke-linejoin="round"/>
+
+    <!-- W shape (white) - overlapping -->
+    <path d="M28 8 L38 42 L50 20 L62 42 L72 8"
+          stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- DIGITAL text -->
+  <text x="85" y="27" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#ffffff" letter-spacing="0.5">
+    DIGITAL
+  </text>
+
+  <!-- VISIONWORKS text -->
+  <text x="85" y="48" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#ffffff" letter-spacing="0.5">
+    VISIONWORKS
+  </text>
+</svg>

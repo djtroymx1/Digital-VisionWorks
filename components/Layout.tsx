@@ -29,10 +29,14 @@ export const Navbar: React.FC = () => {
       <div className="container mx-auto px-6 flex justify-between items-center">
         <a
           href="#"
-          className="text-2xl font-bold tracking-tighter focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-[#0a0a0a] rounded-sm"
+          className="focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-[#0a0a0a] rounded-sm"
           aria-label="Digital VisionWorks - Home"
         >
-          DIGITAL<span className="text-cyan-400">VISIONWORKS</span>
+          <img
+            src="/images/logo-horizontal-white.svg"
+            alt="Digital VisionWorks"
+            className="h-10 md:h-12 w-auto"
+          />
         </a>
 
         {/* Desktop Nav */}
@@ -117,7 +121,11 @@ export const Footer: React.FC = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
           <div>
-            <h3 className="text-2xl font-bold mb-4">DIGITAL<span className="text-cyan-400">VISIONWORKS</span></h3>
+            <img
+              src="/images/logo-horizontal-white.svg"
+              alt="Digital VisionWorks"
+              className="h-10 w-auto mb-4"
+            />
             <p className="text-gray-400 max-w-sm">
               Building the future of digital experiences with AI-first development and premium design.
             </p>
