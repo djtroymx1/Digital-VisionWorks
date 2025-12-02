@@ -342,7 +342,7 @@ const projects: ProjectItem[] = [
     title: "Clockwork Venue",
     type: "SaaS Platform",
     description: "A real-time venue management system for nightclubs and entertainment venues. Features live rotation tracking, VIP timers, DJ dashboards, payout reporting, and multi-device sync across floor staff.",
-    techStack: ["React", "TypeScript", "Firebase"],
+    techStack: ["JavaScript ES2020", "HTML5", "CSS3", "Firebase Auth", "Cloud Firestore", "Firebase Hosting"],
     link: "https://clockworkvenue.com",
     imageSrc: "/images/portfolio2-clockwork.jpeg"
   },
