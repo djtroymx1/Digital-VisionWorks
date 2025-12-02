@@ -344,8 +344,7 @@ const projects: ProjectItem[] = [
     description: "A real-time venue management system for nightclubs and entertainment venues. Features live rotation tracking, VIP timers, DJ dashboards, payout reporting, and multi-device sync across floor staff.",
     techStack: ["React", "TypeScript", "Firebase"],
     link: "https://clockworkvenue.com",
-    // Highly specific prompt for Clockwork Venue branding
-    imageSrc: "/images/portfolio-clockwork.png"
+    imageSrc: "/images/portfolio2-clockwork.jpeg"
   },
   {
     title: "Dogmora",
