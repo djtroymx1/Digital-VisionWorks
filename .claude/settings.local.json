@@ -18,7 +18,19 @@
       "Bash(npm run build:*)",
       "Bash(node scripts/generate-icons.js:*)",
       "Bash(npm run dev:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(find:*)",
+      "Bash(npm ls:*)",
+      "Bash(for img in about-team.png contact-bg.png hero-bg.png portfolio2-clockwork.jpeg portfolio2-dogmora.jpg problem-speed.png problem-workspace.png process-bg.png service-bot.png service-cloud.png service-code.png service-pen.png service-smartphone.png service-trending.png why-us-sculpture.png)",
+      "Bash(do)",
+      "Bash(if [ -f \"c:\\Users\\fladj\\Digital-VisionWorks-main\\public\\images$img\" ])",
+      "Bash(then)",
+      "Bash(echo:*)",
+      "Bash(else)",
+      "Bash(fi)",
+      "Bash(done)",
+      "Bash(npm audit:*)",
+      "Bash(xargs ls:*)"
     ],
     "deny": [],
     "ask": []
