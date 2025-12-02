@@ -35,7 +35,7 @@ export const Navbar: React.FC = () => {
           <img
             src="/images/DVW%20Transparent%20Horizontal.png"
             alt="Digital VisionWorks"
-            className="h-[7.5rem] md:h-36 w-auto"
+            className="h-14 sm:h-16 md:h-24 lg:h-28 w-auto max-w-[60vw]"
           />
         </a>
 
