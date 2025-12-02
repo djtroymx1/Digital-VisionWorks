@@ -739,10 +739,10 @@ export const Contact: React.FC = () => {
             <p className="text-gray-400">
               Prefer email? Reach us directly at{' '}
               <a
-                href="mailto:hello@digitalvisionworks.com"
+                href="mailto:info@digitalvisionworks.com"
                 className="text-cyan-400 hover:text-cyan-300 font-bold focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-[#111] rounded-sm"
               >
-                hello@digitalvisionworks.com
+                info@digitalvisionworks.com
               </a>
             </p>
           </div>
