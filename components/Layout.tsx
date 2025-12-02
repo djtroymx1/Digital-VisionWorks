@@ -122,9 +122,9 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
           <div>
             <img
-              src="/images/logo-horizontal-white.svg"
+              src="/images/DVW%20Transparent%20Horizontal.png"
               alt="Digital VisionWorks"
-              className="h-10 w-auto mb-4"
+              className="h-10 md:h-12 w-auto mb-4"
             />
             <p className="text-gray-400 max-w-sm">
               Building the future of digital experiences with AI-first development and premium design.
