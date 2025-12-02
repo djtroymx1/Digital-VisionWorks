@@ -292,13 +292,13 @@ export const ParallaxImage: React.FC<{
     offset: ["start end", "end start"]
   });
 
-  // Map scroll to y-transform (moves slower than container)
-  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1.1, 1.2]);
+  // Map scroll to y-transform (moves slower than container); keep movement modest to avoid cropping on mobile
+  const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1.05, 1.1]);
 
   return (
     <div ref={ref} className={`relative overflow-hidden ${className}`}>
-      <motion.div style={{ y, scale }} className="w-full h-full md:h-[120%] md:-mt-[10%] relative">
+      <motion.div style={{ y, scale }} className="w-full h-[130%] -mt-[15%] md:h-[120%] md:-mt-[10%] relative">
         <GeneratedImage src={src} aspectRatio={aspectRatio} className="w-full h-full" overlayOpacity={overlayOpacity} alt="Parallax Visual" />
       </motion.div>
     </div>
