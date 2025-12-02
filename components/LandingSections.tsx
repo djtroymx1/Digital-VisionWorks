@@ -379,11 +379,13 @@ export const Portfolio: React.FC = () => {
                   transition={{ duration: 0.8 }}
                   className="relative group rounded-sm overflow-hidden border border-white/10 shadow-2xl bg-[#111]"
                 >
-                  <div className="aspect-[4/3] md:aspect-[16/10] relative z-10">
-                    <ParallaxImage
+                  {/* Use taller aspect ratio on mobile to show full image without cropping */}
+                  <div className="aspect-[4/3] sm:aspect-[3/2] md:aspect-[16/10] relative z-10">
+                    <GeneratedImage
                       src={project.imageSrc}
-                      aspectRatio="16:9" // Using standard aspect ratio but cutting via CSS for shape
+                      className="w-full h-full"
                       overlayOpacity={0}
+                      alt={project.title}
                     />
                   </div>
                   {/* Glass overlay on hover */}

@@ -285,20 +285,21 @@ export const ParallaxImage: React.FC<{
   aspectRatio?: GeneratedImageProps['aspectRatio'];
   className?: string;
   overlayOpacity?: number;
-}> = ({ src, aspectRatio, className = "", overlayOpacity = 0 }) => {
+  disableParallaxOnMobile?: boolean;
+}> = ({ src, aspectRatio, className = "", overlayOpacity = 0, disableParallaxOnMobile = true }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
   });
 
-  // Map scroll to y-transform (moves slower than container); keep movement modest to avoid cropping on mobile
-  const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1.05, 1.1]);
+  // Reduced parallax effect to prevent cropping
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "0%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.02]);
 
   return (
     <div ref={ref} className={`relative overflow-hidden ${className}`}>
-      <motion.div style={{ y, scale }} className="w-full h-[130%] -mt-[15%] md:h-[120%] md:-mt-[10%] relative">
+      <motion.div style={{ y, scale }} className="w-full h-full relative">
         <GeneratedImage src={src} aspectRatio={aspectRatio} className="w-full h-full" overlayOpacity={overlayOpacity} alt="Parallax Visual" />
       </motion.div>
     </div>
